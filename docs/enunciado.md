@@ -1,4 +1,4 @@
-### EJERCICIO 10
+# EJERCICIO 10
 
 Se desea diseñar una base de datos que sea de utilidad para concesionarios de automóviles. Un
 concesionario puede vender automóviles de varias marcas (por ejemplo, Audi y Volkswagen). Sobre los
