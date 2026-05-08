@@ -1,36 +1,24 @@
 export function getPanel(panel) {
   if (panel === "customer") {
     return {
-      title: "Customer Panel",
+      title: "Customerrrr",
       panel_link: "/socio/panel",
       sections: [
         {
-          title: "Amarres",
+          title: "Perfil",
           buttons: [
             {
-              name: "Zonas",
-              link: "/zona/lista",
-            },
-            {
-              name: "Estadísticas",
+              name: "Datos",
               link: "",
             },
           ],
         },
         {
-          title: "Gestion",
+          title: "Stock",
           buttons: [
             {
-              name: "Usuarios",
-              link: "",
-            },
-            {
-              name: "Reportes",
-              link: "",
-            },
-            {
-              name: "Registros",
-              link: "",
+              name: "Ver",
+              link: "/public/panel/customerPanel",
             },
           ],
         },

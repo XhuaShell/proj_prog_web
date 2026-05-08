@@ -1,7 +1,119 @@
-<%- include('../components/header'); %>
-<%- include('../components/navbar_usuario'); %>
+<!DOCTYPE html>
+<html lang="es">
 
-<h1>Customer Panel</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
 
-<%- include('../components/navbar_footer'); %>
-<%- include('../components/footer'); %>
+<body>
+
+<%- include('../components/header') %>
+<%- include('../components/navbar_usuario') %>
+<nav class="navbar">
+
+  <div class="logo">
+    <h2>TuCarro</h2>
+  </div>
+
+  <ul class="menu">
+
+<li class="dropdown">
+  Autos Nuevos
+  <div class="dropdown-content">
+    <a href="#" onclick="cambiarMarca('Mercedes Benz')">Mercedes-Benz</a>
+    <a href="#" onclick="cambiarMarca('Kia')">Kia</a>
+    <a href="#" onclick="cambiarMarca('Mazda')">Mazda</a>
+    <a href="#" onclick="cambiarMarca('Ford')">Ford</a>
+  </div>
+</li>
+
+    <li>Servicios</li>
+    <li>Salir</li>
+
+  </ul>
+
+</nav>
+
+<div class="container">
+
+<h1 id="titulo-marca">Mercedes Benz</h1>
+<p class="subtitulo">Subtítulo para la descripción</p>
+
+  <div class="cards-destacadas">
+
+    <div class="card">
+      <img id="img1" src="/public/img/benz1.jpg">
+      <h3 id="titulo1">Clase A</h3>
+      <p id="precio1">Desde $235.900.000</p>
+    </div>
+
+    <div class="card">
+    <img id="img2" src="/public/img/benz2.jpg">
+    <h3 id="titulo2">Clase C</h3>
+    <p id="precio2">Desde $363.900.000</p>
+    </div>
+
+    <div class="card">
+    <img id="img3" src="/public/img/benz3.jpg">
+    <h3 id="titulo3">Clase G</h3>
+    <p id="precio3">Desde $1.149.900.000</p>
+    </div>
+
+    <div class="card">
+    <img id="img4" src="/public/img/benz4.jpg">
+    <h3 id="titulo4">GLB</h3>
+    <p id="precio4">Desde $249.900.000</p>
+    </div>
+
+  </div>
+  <div class="dropdown-content">
+  <a href="#" onclick="cambiarMarca('Mercedes Benz'); return false;">Mercedes-Benz</a>
+  <a href="#" onclick="cambiarMarca('Kia'); return false;">Kia</a>
+  <a href="#" onclick="cambiarMarca('Mazda'); return false;">Mazda</a>
+  <a href="#" onclick="cambiarMarca('Ford'); return false;">Ford</a>
+</div>
+
+  <h2>Nuestros Modelos</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="filtrar('todos')">Todos</button>
+  <button class="tab" onclick="filtrar('autos')">Automóviles</button>
+  <button class="tab" onclick="filtrar('suv')">SUVs</button>
+  <button class="tab" onclick="filtrar('vans')">Vans</button>
+</div>
+
+<div class="grid-modelos">
+
+  <div class="modelo autos">
+    <h4>Clase A</h4>
+    <p>Automóvil compacto</p>
+  </div>
+
+  <div class="modelo suv">
+    <h4>GLB</h4>
+    <p>SUV familiar</p>
+  </div>
+
+  <div class="modelo vans">
+    <h4>Sprinter</h4>
+    <p>Van de carga</p>
+  </div>
+
+  <div class="modelo autos">
+    <h4>Clase C</h4>
+    <p>Sedán elegante</p>
+  </div>
+
+</div>
+
+</div>
+
+<%- include('../components/navbar_footer') %>
+<%- include('../components/footer') %>
+
+<script src="/public/script.js"></script>
+
+</body>
+</html>
