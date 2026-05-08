@@ -1,1 +1,1 @@
-export { publicMiddleware } from './public.moddleware.js'
+export { publicMiddleware } from "./public.middleware.js";
