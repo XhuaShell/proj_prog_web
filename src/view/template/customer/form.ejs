@@ -1,0 +1,75 @@
+<%- include('../partials/header'); %>
+<%- include('../partials/navbar_usuario'); %>
+
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Editar Información del Socio</h4>
+    </div>
+
+    <div class="card-body">
+
+      <form action="/socio/edicion/?_method=PATCH" method="POST">
+
+        <div class="card-body">
+          <p><strong>Cédula:</strong> <%= usuario.cedula %></p>
+          <p><strong>Email:</strong> <%= usuario.mail %></p>
+          <p><strong>Tipo de Usuario:</strong> <%= usuario.tipo_usuario %></p>
+        </div>
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="nombre" 
+            name="nombre" 
+            value="<%= usuario.nombre %>"
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="direccion" 
+            name="direccion" 
+            value="<%= usuario.direccion %>"
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Número Telefónico</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            id="telefono" 
+            name="telefono" 
+            value="<%= usuario.telefono %>"
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha_vinculacion" class="form-label">Fecha de Vinculación</label>
+          <input 
+            type="date" 
+            class="form-control" 
+            id="fecha_vinculacion" 
+            name="fecha_vinculacion" 
+            value="<%= usuario.fecha_vinculacion %>"
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          Guardar Cambios
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<%- include('../partials/navbar_footer'); %>
+<%- include('../partials/footer'); %>

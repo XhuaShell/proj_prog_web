@@ -1,9 +1,3 @@
-export const ping = async (req, res) => {
-  res.send("Mamandoloooooo");
-};
-
 export const getIndex = async (req, res) => {
-  res.render('index');
+  res.render("index");
 };
-
-export const getLogin = async (req, res) => res.render("login");

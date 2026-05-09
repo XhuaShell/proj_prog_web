@@ -1,4 +1,4 @@
 
-export const validatedUserPassword = async (mail, password) {
+export const validatedUserPassword = async (mail, password) => {
 
 } 

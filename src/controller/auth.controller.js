@@ -1,5 +1,7 @@
 import { getPanel } from "../model/panel.js";
 
+export const getLogin = async (req, res) => res.render("login");
+
 export const loginUserAuth = async function (req, res) {
   console.log(req.body);
   const { mail, password } = req.body;
@@ -44,4 +46,12 @@ export const loginUserAuth = async function (req, res) {
     console.log(error);
     return res.status(400).json({ mensaje: error.message });
   }
+};
+
+export const getRegister = async (req, res) => res.render("register");
+
+export const registerAuth = async (req, res, next) => {};
+
+export const logoutAuth = async (req, res, next) => {
+  res.send("Test")
 };

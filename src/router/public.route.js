@@ -1,14 +1,18 @@
 import { Router } from "express";
-import { getIndex, getLogin, ping } from "../controller/public.controller.js";
+import { getIndex } from "../controller/public.controller.js";
 import { publicMiddleware } from "../middleware/index.js";
-import { loginUserAuth } from "../controller/auth.controller.js";
+import { getLogin, getRegister, loginUserAuth, logoutAuth, registerAuth } from "../controller/auth.controller.js";
 
 export const PublicRouter = Router();
 
 PublicRouter.get("/", publicMiddleware, getIndex);
-PublicRouter.get("/ping", publicMiddleware, ping);
-PublicRouter.get("/login", publicMiddleware, getLogin);
 
+PublicRouter.get("/login", publicMiddleware, getLogin);
 PublicRouter.post("/login", publicMiddleware, loginUserAuth);
+
+PublicRouter.get("/register", publicMiddleware, getRegister);
+PublicRouter.post("/register", publicMiddleware, registerAuth);
+
+PublicRouter.post("/logout", publicMiddleware, logoutAuth)
 
 export default PublicRouter;

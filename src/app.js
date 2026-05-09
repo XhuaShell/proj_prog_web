@@ -1,12 +1,14 @@
 import express from "express";
 import session from "express-session";
+import genFunc from "connect-pg-simple";
 import ejs from "ejs";
 
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { PORT } from "./config/config.js";
+import { CONNECTION_STRING, PORT } from "./config/config.js";
 import MainRouter from "./router/router.js";
+import { sessionAPP } from "./config/session.js";
 
 // Initial project path
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -22,17 +24,20 @@ app.set("view engine", "ejs");
 // In this line we define the directory that contains the ejs files
 app.set("views", path.join(dirname, "/view/template"));
 
+// Sessions Config
 app.set("trust proxy", 1); // trust first proxy
+app.use(sessionAPP);
 
-// This is where the session is created in express.
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-  }),
-);
+app.get("/whoami", async (req, res) => {
+  const name = req.session.user;
+  console.log(req.session.user);
+  res.send(`Your name is: ${name.username}`);
+});
+
+app.get("/whoami2", (req, res) => {
+  console.log(req.session);
+  res.json(req.session);
+});
 
 // Router with all applications paths
 app.use(MainRouter);

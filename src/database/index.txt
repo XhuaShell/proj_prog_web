@@ -1,0 +1,64 @@
+import { and, eq } from "drizzle-orm";
+import { DB } from "./db.ts";
+import { usersTable, type UserInsert } from "./schema/index.ts";
+
+async function main() {
+  await DB.delete(usersTable);
+
+  const newUsers: UserInsert[] = [
+    {
+      age: 20,
+      name: "Jesus",
+      email: "jdperazar@gmail.com",
+      phone: "3043946278",
+    },
+    {
+      age: 19,
+      name: "Tania",
+      email: "tania@gmail.com",
+      phone: "3043951298",
+    },
+  ];
+
+  const email = newUsers[0];
+
+  await DB.insert(usersTable).values(newUsers);
+
+  const usersAfterCreate = await DB.select().from(usersTable);
+  console.log("Users after create");
+  console.table(usersAfterCreate);
+
+  await DB.update(usersTable)
+    .set({ age: 21 })
+    .where(and(eq(usersTable.email, newUsers[0]?.email!), eq(usersTable.name, newUsers[0]?.name!)));
+
+  const usersAfterUpdate = await DB.query.usersTable.findMany();
+
+  console.log("Users after update");
+  console.table(usersAfterUpdate);
+
+  const userFined = await DB.query.usersTable.findFirst({
+    where: (u, { eq }) => eq(u.email, newUsers[0]?.email!),
+    columns: {
+      id: true,
+      name: true,
+    },
+  });
+
+  console.log("User fined");
+  console.table(userFined);
+
+  await DB.delete(usersTable).where(eq(usersTable.id, userFined?.id!));
+
+  const usersAfterDelete = await DB.query.usersTable.findMany({
+    columns: {
+      id: true,
+      name: true,
+    }
+  });
+
+  console.log("Users after update");
+  console.table(usersAfterDelete);
+}
+
+main().catch(console.error);
