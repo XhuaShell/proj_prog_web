@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getIndex } from "../controller/public.controller.js";
-import { publicMiddleware } from "../middleware/index.js";
+import { publicMiddleware } from "../middleware/public.middleware.js";
 import { getLogin, getRegister, loginUserAuth, logoutAuth, registerAuth } from "../controller/auth.controller.js";
 
 export const PublicRouter = Router();

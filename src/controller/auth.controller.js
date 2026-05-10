@@ -1,4 +1,6 @@
 import { getPanel } from "../model/panel.js";
+import * as CustomerService from "../service/customer.service.js";
+import * as AuthService from "../service/auth.service.js";
 
 export const getLogin = async (req, res) => res.render("login");
 
@@ -9,6 +11,9 @@ export const loginUserAuth = async function (req, res) {
   try {
     if (!mail || !password)
       throw new Error("El mail y la contraseña son obligatorios");
+
+    const user = await AuthService.validatedUserPassword(mail, password);
+    console.log(user);
 
     if (mail === "customer@mail.com" && password === "123456") {
       req.session.user = { username: "Customer", email: "customer@mail.com" };
@@ -50,8 +55,15 @@ export const loginUserAuth = async function (req, res) {
 
 export const getRegister = async (req, res) => res.render("register");
 
-export const registerAuth = async (req, res, next) => {};
+export const registerAuth = async (req, res, next) => {
+  const { firstname, lastname, email, password } = req.body;
+
+  console.log(firstname, lastname, email, password);
+  await CustomerService.registerCustomer(firstname, lastname, email, password);
+
+  res.redirect("/register");
+};
 
 export const logoutAuth = async (req, res, next) => {
-  res.send("Test")
+  res.send("Test");
 };

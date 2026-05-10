@@ -1,8 +1,18 @@
-import { db } from "../database/db.js";
-import { users } from "../database/schema/index.js";
+import { DB } from "../database/db.js";
+import { usersTable } from "../database/schema/user.schema.js";
+import { eq } from "drizzle-orm";
 
-export async function findUserByEmail(email) {
-  return await db.query.users.findFirst({
-    where: (users, { eq }) => eq(users.email, email),
-  });
-}
+export const logUser = async function (email, password) {
+  try {
+    const user = DB.select()
+      .from(usersTable)
+      .where(eq(usersTable.email, email));
+
+    if (user.email) throw new Error("El usuario no existe");
+
+    return user;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
