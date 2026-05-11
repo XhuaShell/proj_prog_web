@@ -1,6 +1,6 @@
 services:
   myDB:
-    image: postgres:16
+    image: postgres:17
     container_name: db-cocesionario
     restart: no 
     env_file:

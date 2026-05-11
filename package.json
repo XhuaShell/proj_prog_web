@@ -9,15 +9,23 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start:dev:studio": "npx drizzle-kit studio --port=8000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "ejs": "^5.0.2",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.10",
+    "npx": "^10.2.2"
   }
 }
