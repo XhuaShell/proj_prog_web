@@ -1,21 +1,26 @@
+<div class="layout-panel">
+        <div class="sidebar">
+        <h4><%= panelInfo.title %></h4>
+        <h5><%= user.username %></h5>
 
-<div class="d-flex">
-    <div class="sidebar bg-dark text-white p-3">
-        <h4 class="mb-1 fw-bold"><%= panelInfo.title %> </h4>
-        <h5 class="mb-4 text-info" ><%= user.username %> </h5>
+        <hr class="linea-bonita">
 
-        <hr class="my-3 linea-bonita" >
-
-        <nav class="nav flex-column">
+        <nav>
             <% for (let section of panelInfo.sections) { %>
-                <span class="text-uppercase text-secondary small mb-2"><%= section.title %></span>
-                <% for (let button of section.buttons ) {%>
-                    <a href="<%= button.link %>" class="nav-link text-white"><%= button.name %></a>
+
+                <span><%= section.title %></span>
+
+                <% for (let button of section.buttons ) { %>
+                    <a href="<%= button.link %>" class="menu-item">
+                        <%= button.name %>
+                    </a>
                 <% } %>
-                <hr class="my-3 linea-bonita linea-bonita-secundaria" >
+
+                <hr class="linea-bonita linea-bonita-secundaria">
+
             <% } %>
         </nav>
     </div>
 
     <!-- CONTENIDO -->
-    <div class="flex-grow-1 p-4">
+<div class="contenido-panel">

@@ -1,7 +1,7 @@
 export function getPanel(panel) {
   if (panel === "customer") {
     return {
-      title: "Customerrrr",
+      title: "Customerrr",
       panel_link: "/socio/panel",
       sections: [
         {
@@ -41,31 +41,35 @@ export function getPanel(panel) {
       panel_link: "/socio/panel",
       sections: [
         {
-          title: "Amarres",
+          title: "Registrar",
           buttons: [
             {
-              name: "Zonas",
+              name: "Empleado",
               link: "/zona/lista",
             },
             {
-              name: "Estadísticas",
+              name: "Administrador",
+              link: "",
+            },
+            {
+              name: "Carros",
               link: "",
             },
           ],
         },
         {
-          title: "Gestion",
+          title: "Ver",
           buttons: [
             {
-              name: "Usuarios",
+              name: "Clientes",
               link: "",
             },
             {
-              name: "Reportes",
+              name: "Stock",
               link: "",
             },
             {
-              name: "Registros",
+              name: "Vendedores",
               link: "",
             },
           ],
@@ -89,31 +93,27 @@ export function getPanel(panel) {
       panel_link: "/socio/panel",
       sections: [
         {
-          title: "Amarres",
+          title: "Ventas",
           buttons: [
             {
-              name: "Zonas",
+              name: "Registrar",
               link: "/zona/lista",
             },
             {
-              name: "Estadísticas",
+              name: "Ver",
               link: "",
             },
           ],
         },
         {
-          title: "Gestion",
+          title: "Stock",
           buttons: [
             {
-              name: "Usuarios",
+              name: "Ver",
               link: "",
             },
             {
               name: "Reportes",
-              link: "",
-            },
-            {
-              name: "Registros",
               link: "",
             },
           ],

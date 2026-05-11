@@ -1,7 +1,15 @@
-<%- include('../components/header'); %>
-<%- include('../components/navbar_usuario'); %>
+<!DOCTYPE html>
+<html lang="es">
 
-<h1>Seller Panel</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
 
 <%- include('../components/navbar_footer'); %>
 <%- include('../components/footer'); %>
