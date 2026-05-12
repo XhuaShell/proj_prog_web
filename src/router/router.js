@@ -1,23 +1,59 @@
 import { Router } from "express";
-import { getPanel } from "../model/panel.js";
 import PublicRouter from "./public.route.js";
 import ErrorRouter from "./error.route.js";
+
+import {
+  authAdminMiddleware,
+  authSellerMiddleware,
+  authCustomerMiddleware,
+} from "../middleware/auth.middleware.js";
 
 const MainRouter = Router();
 
 MainRouter.use(PublicRouter);
+
 MainRouter.use("/error", ErrorRouter);
 
-MainRouter.get("/panel/:type", (req, res) => {
-  const type = req.params.type; // admin, seller, customer
-  const panelInfo = getPanel(type);
-  const user = {
-    username: "Kevin" // Aca ira lo del login
-  };
-  res.render(`panel/${type}Panel`, {
-    panelInfo,
-    user
-  });
-});
+// CUSTOMER
+MainRouter.get(
+  "/panel/customer",
+  authCustomerMiddleware,
+  (req, res) => {
+
+    res.render("panel/customerPanel", {
+      panelInfo: req.session.panelInfo,
+      user: req.session.user,
+    });
+
+  }
+);
+
+// SELLER
+MainRouter.get(
+  "/panel/seller",
+  authSellerMiddleware,
+  (req, res) => {
+
+    res.render("panel/sellerPanel", {
+      panelInfo: req.session.panelInfo,
+      user: req.session.user,
+    });
+
+  }
+);
+
+// ADMIN
+MainRouter.get(
+  "/panel/admin",
+  authAdminMiddleware,
+  (req, res) => {
+
+    res.render("panel/adminPanel", {
+      panelInfo: req.session.panelInfo,
+      user: req.session.user,
+    });
+
+  }
+);
 
 export default MainRouter;

@@ -1,6 +1,6 @@
 export class Customer {
-  constructor(firstname, lastname, email, password) {
-    if (!firstname || !lastname || !email || !password ) {
+  constructor(firstname, lastname, email, password, role) {
+    if (!firstname || !lastname || !email || !password || !role ) {
       throw new Error("Todos los campos son obligatorios");
     }
 
@@ -8,5 +8,6 @@ export class Customer {
     this.lastname = lastname;
     this.email = email;
     this.password = password;
+    this.role = role;
   }
 }

@@ -1,26 +1,59 @@
-export const authSessionMiddleware = async function (req, res, next) {
-  if ((req.session.user = null)) {
-    res.redirect("/error/session");
-    return;
-  } 
+
+export const authSessionMiddleware = (req, res, next) => {
+
+  // verificar sesión
+  if (!req.session.user) {
+    return res.redirect("/error/session");
+  }
 
   next();
+
 };
 
-export const authCustomerMiddleware = async function (req, res, next) {
-  authSessionMiddleware(req, res, next);
+// CUSTOMER
+export const authCustomerMiddleware = (req, res, next) => {
 
-  if (req.session == null) next();
-};
+  if (!req.session.user) {
+    return res.redirect("/error/session");
+  }
 
-export const authSellerMiddleware = async function (req, res, next) {
-  authSessionMiddleware(req, res, next);
+  // validar rol
+  if (req.session.user.role !== "customer") {
+    return res.status(403).send("No autorizado");
+  }
 
   next();
+
 };
 
-export const authAdminMiddleware = async function (req, res, next) {
-  authSessionMiddleware(req, res, next);
+// SELLER
+export const authSellerMiddleware = (req, res, next) => {
+
+  if (!req.session.user) {
+    return res.redirect("/error/session");
+  }
+
+  // validar rol
+  if (req.session.user.role !== "seller") {
+    return res.status(403).send("No autorizado");
+  }
 
   next();
+
+};
+
+// ADMIN
+export const authAdminMiddleware = (req, res, next) => {
+
+  if (!req.session.user) {
+    return res.redirect("/error/session");
+  }
+
+  // validar rol
+  if (req.session.user.role !== "admin") {
+    return res.status(403).send("No autorizado");
+  }
+
+  next();
+
 };

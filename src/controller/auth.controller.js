@@ -5,65 +5,93 @@ import * as AuthService from "../service/auth.service.js";
 export const getLogin = async (req, res) => res.render("login");
 
 export const loginUserAuth = async function (req, res) {
+
   console.log(req.body);
+
   const { mail, password } = req.body;
 
   try {
-    if (!mail || !password)
-      throw new Error("El mail y la contraseña son obligatorios");
 
-    const user = await AuthService.validatedUserPassword(mail, password);
+    if (!mail || !password) {
+      throw new Error("El mail y la contraseña son obligatorios");
+    }
+
+    // validar usuario
+    const user = await AuthService.validatedUserPassword(
+      mail,
+      password
+    );
+
     console.log(user);
 
-    if (mail === "customer@mail.com" && password === "123456") {
-      req.session.user = { username: "Customer", email: "customer@mail.com" };
-      req.session.panelInfo = getPanel("customer");
-      res.render("panel/customerPanel", {
-        user: req.session.user,
-        panelInfo: req.session.panelInfo,
-      });
-      return;
+    // guardar usuario en sesión
+    req.session.user = {
+      id: user.id_user,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      role: user.role,
+    };
+
+    // información del panel
+    req.session.panelInfo = getPanel(user.role);
+
+    // CUSTOMER
+    if (user.role === "customer") {
+
+      return res.redirect("/panel/customer");
+
     }
 
-    if (mail === "seller@mail.com" && password === "123456") {
-      req.session.user = { username: "Seller", email: "seller@mail.com" };
-      req.session.panelInfo = getPanel("seller");
-      res.render("panel/sellerPanel", {
-        user: req.session.user,
-        panelInfo: req.session.panelInfo,
-      });
-      return;
+    // SELLER
+    if (user.role === "seller") {
+
+      return res.redirect("/panel/seller");
+
     }
 
-    if (mail === "admin@mail.com" && password === "123456") {
-      req.session.user = { username: "Admin", email: "admin@mail.com" };
-      req.session.panelInfo = getPanel("admin");
+    // ADMIN
+    if (user.role === "admin") {
 
-      console.log(req.session.panelInfo);
+      return res.redirect("/panel/admin");
 
-      res.render("panel/adminPanel", {
-        user: req.session.user,
-        panelInfo: req.session.panelInfo,
-      });
-      return;
     }
+
   } catch (error) {
+
     console.log(error);
-    return res.status(400).json({ mensaje: error.message });
+
+    return res.status(400).json({
+      mensaje: error.message
+    });
+
   }
+
 };
 
 export const getRegister = async (req, res) => res.render("register");
 
 export const registerAuth = async (req, res, next) => {
+
   const { firstname, lastname, email, password } = req.body;
 
   console.log(firstname, lastname, email, password);
-  await CustomerService.registerCustomer(firstname, lastname, email, password);
+
+  await CustomerService.registerCustomer(
+    firstname,
+    lastname,
+    email,
+    password
+  );
 
   res.redirect("/register");
+
 };
 
 export const logoutAuth = async (req, res, next) => {
-  res.send("Test");
+
+  req.session.destroy(() => {
+    res.redirect("/login");
+  });
+
 };

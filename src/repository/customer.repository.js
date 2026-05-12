@@ -16,5 +16,6 @@ export async function create(customer) {
     lastname: customer.lastname,
     password: customer.password,
     email: customer.email,
+    role: customer.role,
   });
 }
