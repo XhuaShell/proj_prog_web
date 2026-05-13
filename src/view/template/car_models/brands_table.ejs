@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+
+<div class="container py-5">
+    <h1 class="title text-muted">Brands Table</h1>
+
+    <br>
+
+    <div class="btn btn-primary">
+      <a type="reset" href="/panel/admin/brand/register" style="color: #222; text-decoration: none;">Register brand</a>        
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <table class="table">
+      <thead>
+        <tr align='center'>
+          <th >Id Brand</th>
+          <th >Name</th>
+          <th >Nif</th>
+          <th >Actions</th>
+        </tr>
+      </thead>
+      </tbody align='center'>
+        <% brands.forEach(brand => { %>
+          <tr align='center'>
+              <td><%= brand.id_brand %></td>
+              <td><%= brand.name %></td>
+              <td><%= brand.nif %></td>
+              <td>
+                <a href='/panel/admin/brand/edit/<%= brand.id_brand %>'>
+                  <span class='material-symbols-outlined'>edit</span>
+                </a>
+                <a href='/panel/admin/brand/delete/<%= brand.id_brand %>'>                  
+                  <span class='material-symbols-outlined'>delete</span>
+                </a>
+              </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+
+<div class="container py-5">
+    <h1 class="title text-muted">Models table</h1>
+
+    <br>
+
+    <div class="btn btn-primary">
+      <a type="reset" href="/panel/admin/model/form" style="color: #222; text-decoration: none;">Registrar modelo</a>        
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <table class="table">
+      <thead>
+        <tr align='center'>
+          <th>Identificacion</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Fecha Nac</th>
+          <th>Salario</th>
+          <th>Recargo Nocturno</th>
+          <th>Total Nómina</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      </tbody>
+      </tbody>
+    </table>
+  </div>
+
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>
+

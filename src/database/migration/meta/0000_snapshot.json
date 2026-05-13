@@ -1,9 +1,223 @@
 {
-  "id": "8b86023a-9016-4688-aa7b-cb8f64e76ad3",
+  "id": "f12eda7c-8e7e-4932-9a52-3b158ecfeace",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.brands": {
+      "name": "brands",
+      "schema": "",
+      "columns": {
+        "id_brand": {
+          "name": "id_brand",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tax_id": {
+          "name": "tax_id",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "brands_tax_id_unique": {
+          "name": "brands_tax_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "tax_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.models": {
+      "name": "models",
+      "schema": "",
+      "columns": {
+        "id_model": {
+          "name": "id_model",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version": {
+          "name": "version",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "price": {
+          "name": "price",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_spec": {
+          "name": "id_spec",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_brand": {
+          "name": "id_brand",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "models_id_spec_technical_specs_id_spec_fk": {
+          "name": "models_id_spec_technical_specs_id_spec_fk",
+          "tableFrom": "models",
+          "tableTo": "technical_specs",
+          "columnsFrom": [
+            "id_spec"
+          ],
+          "columnsTo": [
+            "id_spec"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "models_id_brand_brands_id_brand_fk": {
+          "name": "models_id_brand_brands_id_brand_fk",
+          "tableFrom": "models",
+          "tableTo": "brands",
+          "columnsFrom": [
+            "id_brand"
+          ],
+          "columnsTo": [
+            "id_brand"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.technical_specs": {
+      "name": "technical_specs",
+      "schema": "",
+      "columns": {
+        "id_spec": {
+          "name": "id_spec",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "engine": {
+          "name": "engine",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "displacement": {
+          "name": "displacement",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuel_type": {
+          "name": "fuel_type",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_torque": {
+          "name": "max_torque",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_power": {
+          "name": "max_power",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transmission": {
+          "name": "transmission",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rear_suspension": {
+          "name": "rear_suspension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "front_suspension": {
+          "name": "front_suspension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "total_height": {
+          "name": "total_height",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "total_width": {
+          "name": "total_width",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "total_length": {
+          "name": "total_length",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.users": {
       "name": "users",
       "schema": "",
@@ -15,8 +229,14 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "username": {
-          "name": "username",
+        "firstname": {
+          "name": "firstname",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastname": {
+          "name": "lastname",
           "type": "varchar(100)",
           "primaryKey": false,
           "notNull": true
@@ -27,23 +247,30 @@
           "primaryKey": false,
           "notNull": true
         },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'customer'"
+        },
         "address": {
           "name": "address",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "ph_number": {
           "name": "ph_number",
           "type": "varchar(10)",
           "primaryKey": false,
-          "notNull": true
-        },
-        "hashed_password": {
-          "name": "hashed_password",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},

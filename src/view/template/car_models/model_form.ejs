@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<div class="container mt-4 mb-5">
+
+  <h2 class="mb-4"> <%= model ? "Update Car Model" : "Register Car Model" %> </h2>
+
+  <form action="<%= action %>" method="POST" >
+
+      <!-- MODEL INFORMATION -->
+
+      <h4 class="mb-3">Model Information</h4>
+
+      <div class="mb-3">
+          <label class="form-label">Name</label>
+
+          <input
+              type="text"
+              name="name"
+              class="form-control"
+              value="<%= model?.name || '' %>"
+              required
+          >
+      </div>
+
+      <div class="mb-3">
+          <label class="form-label">Description</label>
+
+          <textarea
+              name="description"
+              class="form-control"
+              rows="4"
+          ><%= model?.description || '' %></textarea>
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">Version</label>
+
+              <input
+                  type="text"
+                  name="version"
+                  class="form-control"
+                  value="<%= model?.version || '' %>"
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">Year</label>
+
+              <input
+                  type="number"
+                  name="year"
+                  class="form-control"
+                  value="<%= model?.year || '' %>"
+                  required
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">Price</label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="price"
+                  class="form-control"
+                  value="<%= model?.price || '' %>"
+                  required
+              >
+          </div>
+
+      </div>
+
+      <!-- BRAND -->
+
+      <h4 class="mt-3 mb-3">Brand</h4>
+
+      <%- include('../components/brands'); %>
+      
+
+      <!-- TECHNICAL SPECS -->
+
+      <h4 class="mt-4 mb-3">
+          Technical Specifications
+      </h4>
+
+      <div class="row">
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Engine
+              </label>
+
+              <input
+                  type="text"
+                  name="engine"
+                  class="form-control"
+                  value="<%= technicalSpecs?.engine || '' %>"
+                  required
+              >
+          </div>
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Displacement
+              </label>
+
+              <input
+                  type="number"
+                  name="displacement"
+                  class="form-control"
+                  value="<%= technicalSpecs?.displacement || '' %>"
+                  required
+              >
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Fuel Type
+              </label>
+
+              <input
+                  type="text"
+                  name="fuel_type"
+                  class="form-control"
+                  value="<%= technicalSpecs?.fuel_type || '' %>"
+                  required
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Max Torque
+              </label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="max_torque"
+                  class="form-control"
+                  value="<%= technicalSpecs?.max_torque || '' %>"
+                  required
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Max Power
+              </label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="max_power"
+                  class="form-control"
+                  value="<%= technicalSpecs?.max_power || '' %>"
+                  required
+              >
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Transmission
+              </label>
+
+              <input
+                  type="text"
+                  name="transmission"
+                  class="form-control"
+                  value="<%= technicalSpecs?.transmission || '' %>"
+                  required
+              >
+          </div>
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Fuel Type
+              </label>
+
+              <input
+                  type="text"
+                  name="fuel_type"
+                  class="form-control"
+                  value="<%= technicalSpecs?.fuel_type || '' %>"
+                  required
+              >
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Front Suspension
+              </label>
+
+              <textarea
+                  name="front_suspension"
+                  class="form-control"
+                  rows="3"
+              ><%= technicalSpecs?.front_suspension || '' %></textarea>
+          </div>
+
+          <div class="col-md-6 mb-3">
+              <label class="form-label">
+                  Rear Suspension
+              </label>
+
+              <textarea
+                  name="rear_suspension"
+                  class="form-control"
+                  rows="3"
+              ><%= technicalSpecs?.rear_suspension || '' %></textarea>
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Total Height
+              </label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="total_height"
+                  class="form-control"
+                  value="<%= technicalSpecs?.total_height || '' %>"
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Total Width
+              </label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="total_width"
+                  class="form-control"
+                  value="<%= technicalSpecs?.total_width || '' %>"
+              >
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label class="form-label">
+                  Total Length
+              </label>
+
+              <input
+                  type="number"
+                  step="0.01"
+                  name="total_length"
+                  class="form-control"
+                  value="<%= technicalSpecs?.total_length || '' %>"
+              >
+          </div>
+
+      </div>
+
+      <div class="mt-4">
+
+          <button
+              type="submit"
+              class="btn btn-primary"
+          >
+              <%= model
+                  ? "Update Model"
+                  : "Register Model"
+              %>
+          </button>
+
+      </div>
+
+  </form>
+  
+</div>
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>

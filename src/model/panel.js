@@ -1,7 +1,67 @@
 export function getPanel(panel) {
+  if (panel === "admin") {
+    return {
+      title: "Admin Panel",
+      panel_link: "/socio/panel",
+      sections: [
+        {
+          title: "Manage",
+          buttons: [
+            {
+              name: "Models",
+              link: "/panel/admin/model",
+            },
+            {
+              name: "Brands",
+              link: "/panel/admin/brands",
+            },
+            {
+              name: "Technical Specs",
+              link: "/panel/admin/model",
+            },
+            {
+              name: "Cars",
+              link: "/error/unfinishedFunction",
+            },
+            {
+              name: "Sellers",
+              link: "/error/unfinishedFunction",
+            },
+          ],
+        },
+        {
+          title: "Show",
+          buttons: [
+            {
+              name: "Counsumers",
+              link: "/error/unfinishedFunction",
+            },
+            {
+              name: "Stock",
+              link: "/error/unfinishedFunction",
+            },
+            {
+              name: "Sellers",
+              link: "/error/unfinishedFunction",
+            },
+          ],
+        },
+        {
+          title: "Acount",
+          buttons: [
+            {
+              name: "Personal account",
+              link: "/error/unfinishedFunction",
+            },
+          ],
+        },
+      ],
+    };
+  }
+
   if (panel === "customer") {
     return {
-      title: "Customerrr",
+      title: "Customer",
       panel_link: "/socio/panel",
       sections: [
         {
@@ -9,7 +69,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Datos",
-              link: "",
+              link: "/error/unfinishedFunction",
             },
           ],
         },
@@ -18,7 +78,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Ver",
-              link: "/public/panel/customerPanel",
+              link: "/error/unfinishedFunction",
             },
           ],
         },
@@ -27,59 +87,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Actualización",
-              link: "/socio/informacion",
-            },
-          ],
-        },
-      ],
-    };
-  }
-
-  if (panel === "admin") {
-    return {
-      title: "Admin Panel",
-      panel_link: "/socio/panel",
-      sections: [
-        {
-          title: "Registrar",
-          buttons: [
-            {
-              name: "Empleado",
-              link: "/zona/lista",
-            },
-            {
-              name: "Administrador",
-              link: "",
-            },
-            {
-              name: "Carros",
-              link: "",
-            },
-          ],
-        },
-        {
-          title: "Ver",
-          buttons: [
-            {
-              name: "Clientes",
-              link: "",
-            },
-            {
-              name: "Stock",
-              link: "",
-            },
-            {
-              name: "Vendedores",
-              link: "",
-            },
-          ],
-        },
-        {
-          title: "Cuenta",
-          buttons: [
-            {
-              name: "Actualización",
-              link: "/socio/informacion",
+              link: "/error/unfinishedFunction",
             },
           ],
         },

@@ -1,4 +1,7 @@
 export const publicMiddleware = async (req, res, next) => {
-  console.log("LOG");
+  
+  res.locals.user = req.session.user || null;
+  res.locals.panelInfo = req.session.panelInfo || null;
+  
   next();
 };

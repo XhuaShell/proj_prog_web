@@ -1,0 +1,28 @@
+<!--
+  Éste archivo se trabajó como un componente, porque más adelante en el proyecto
+  necesitarémos usar otra vez la busqueda de una marca y podría ser util
+-->
+
+<div class="mb-3">
+  <label class="form-label"> Select Brand </label>
+
+  <select
+    name="id_brand"
+    class="form-select"
+    required >
+
+    <option value=""> Select a brand </option>
+
+    <% for (const brand of brands) { %>
+      <option
+        value="<%= brand.id_brand %>"
+        <%= model?.id_brand === brand.id_brand
+            ? "selected"
+            : ""
+        %>
+      >
+        <%= brand.name %> - <%= brand.nif %>
+      </option>
+    <% } %>
+  </select>
+</div>

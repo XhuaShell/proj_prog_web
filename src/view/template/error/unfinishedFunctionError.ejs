@@ -1,13 +1,45 @@
-<%- include('../components/header'); %>
-<%- include('../components/navbar_usuario'); %>
+<!DOCTYPE html>
+<html lang="es">
 
-<h1>Lo siento, ésta funcion no ha sido finalizada todavía, comuniquense con el admin perensejo: </h1>
-<ul>
-    <li>Numero: 3001231230</li>
-    <li>mail: perensejo@udistrital.edu.co</li>
-</ul>
+<head>
+  <meta charset="UTF-8">
+  <title>Mercedes Benz</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
 
-<img src="/public/img/zorry.jpg" alt="">
+<body>
 
-<%- include('../components/navbar_footer'); %>
-<%- include('../components/footer'); %>
+<%- include('../components/header') %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<nav class="navbar">
+
+  <div class="logo">
+  </div>
+
+  <ul class="menu">
+    <li>Salir</li>
+  </ul>
+
+</nav>
+
+<div class="container">
+    <div >    
+        <h1> Lo siento, ésta función no ha sido finalizada todavía </h1>
+        
+        <ul>
+            <li>Numero: 3001231230</li>
+            <li>mail: perensejo@udistrital.edu.co</li>
+        </ul>
+        
+        <img src="/public/img/zorry.jpg" alt="">
+    </div>
+</div>
+
+<%- include('../components/navbar_footer') %>
+<%- include('../components/footer') %>
+
+<script src="/public/script.js"></script>
+
+</body>
+</html>

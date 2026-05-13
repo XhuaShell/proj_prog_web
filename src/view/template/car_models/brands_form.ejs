@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Brand Form</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<div class="container mt-4 mb-5">
+
+  <h2 class="mb-4"> <%= brand ? "Update Brand" : "Register Brand" %> </h2>
+
+  <form action="/panel/admin/brand/<%= action %>" method="POST" >
+
+      <h4 class="mb-3">Information</h4>
+
+      <div class="mb-3">
+          <label class="form-label">Name</label>
+
+          <input
+              type="text"
+              name="name"
+              class="form-control"
+              value="<%= brand?.name || '' %>"
+              required
+          >
+      </div>
+
+      <div class="mb-3">
+          <label class="form-label">Nif</label>
+
+          <input
+              type="text"
+              name="nif"
+              class="form-control"
+              value="<%= brand?.nif || '' %>"
+              required
+          >
+      </div>
+
+      <input type="hidden"
+        name="id_brand"
+        value="<%= brand?.id_brand || '' %>"
+      >
+
+      <div class="mt-4">
+          <button type="submit" class="btn btn-primary">
+              <%= brand ? "Update" : "Register" %>
+          </button>
+      </div>
+
+  </form>
+  
+</div>
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>

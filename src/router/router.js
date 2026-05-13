@@ -1,6 +1,9 @@
 import { Router } from "express";
 import PublicRouter from "./public.route.js";
 import ErrorRouter from "./error.route.js";
+import AdminRouter from "./admin.route.js";
+import CustomerRouter from "./customer.route.js";
+import SellerRouter from "./seller.route.js";
 
 import {
   authAdminMiddleware,
@@ -8,52 +11,17 @@ import {
   authCustomerMiddleware,
 } from "../middleware/auth.middleware.js";
 
+import { publicMiddleware } from "../middleware/public.middleware.js";
+
 const MainRouter = Router();
 
-MainRouter.use(PublicRouter);
+MainRouter.use(publicMiddleware);
 
+MainRouter.use(PublicRouter);
 MainRouter.use("/error", ErrorRouter);
 
-// CUSTOMER
-MainRouter.get(
-  "/panel/customer",
-  authCustomerMiddleware,
-  (req, res) => {
-
-    res.render("panel/customerPanel", {
-      panelInfo: req.session.panelInfo,
-      user: req.session.user,
-    });
-
-  }
-);
-
-// SELLER
-MainRouter.get(
-  "/panel/seller",
-  authSellerMiddleware,
-  (req, res) => {
-
-    res.render("panel/sellerPanel", {
-      panelInfo: req.session.panelInfo,
-      user: req.session.user,
-    });
-
-  }
-);
-
-// ADMIN
-MainRouter.get(
-  "/panel/admin",
-  authAdminMiddleware,
-  (req, res) => {
-
-    res.render("panel/adminPanel", {
-      panelInfo: req.session.panelInfo,
-      user: req.session.user,
-    });
-
-  }
-);
+MainRouter.use(AdminRouter);
+MainRouter.use(CustomerRouter);
+MainRouter.use(SellerRouter);
 
 export default MainRouter;
