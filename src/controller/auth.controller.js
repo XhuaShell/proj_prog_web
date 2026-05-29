@@ -48,8 +48,8 @@ export const loginUserAuth = async function (req, res) {
   } catch (error) {
     console.log(error);
 
-    return res.status(400).json({
-      mensaje: error.message,
+    return res.render("login_error", {
+    error: error.message
     });
   }
 };

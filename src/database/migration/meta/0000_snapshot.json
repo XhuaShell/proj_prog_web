@@ -1,5 +1,5 @@
 {
-  "id": "f12eda7c-8e7e-4932-9a52-3b158ecfeace",
+  "id": "dcb9bb17-0a97-488c-a281-44233fe5c85f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -21,8 +21,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "tax_id": {
-          "name": "tax_id",
+        "nif": {
+          "name": "nif",
           "type": "varchar(30)",
           "primaryKey": false,
           "notNull": true
@@ -32,11 +32,11 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "brands_tax_id_unique": {
-          "name": "brands_tax_id_unique",
+        "brands_nif_unique": {
+          "name": "brands_nif_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "tax_id"
+            "nif"
           ]
         }
       },

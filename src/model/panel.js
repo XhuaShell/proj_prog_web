@@ -23,10 +23,6 @@ export function getPanel(panel) {
               name: "Cars",
               link: "/error/unfinishedFunction",
             },
-            {
-              name: "Sellers",
-              link: "/error/unfinishedFunction",
-            },
           ],
         },
         {
@@ -42,7 +38,7 @@ export function getPanel(panel) {
             },
             {
               name: "Sellers",
-              link: "/error/unfinishedFunction",
+              link: "/panel/admin/sellers",
             },
           ],
         },

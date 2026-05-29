@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sellers Table</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<div class="container py-5">
+
+  <h1 class="title text-muted">
+    Sellers Table
+  </h1>
+
+  <br>
+
+  <div class="btn btn-primary">
+    <a
+      href="/panel/admin/seller/register"
+      style="color: #222; text-decoration: none;"
+    >
+      Register Seller
+    </a>
+  </div>
+
+  <br><br><br>
+
+  <table class="table">
+
+    <thead>
+
+      <tr align="center">
+
+        <th>Id</th>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody align="center">
+
+      <% sellers.forEach(seller => { %>
+
+        <tr>
+
+          <td><%= seller.id_user %></td>
+          <td><%= seller.firstname %></td>
+          <td><%= seller.lastname %></td>
+          <td><%= seller.email %></td>
+          <td><%= seller.role %></td>
+
+          <td>
+
+            <a href="/panel/admin/seller/delete/<%= seller.id_user %>">
+              Delete
+            </a>
+
+          </td>
+
+        </tr>
+
+      <% }) %>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>

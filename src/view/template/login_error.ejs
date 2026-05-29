@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Error Login</title>
+
+  <link rel="stylesheet" href="/public/css/main.css">
+
+</head>
+
+<body
+  style="
+    background: #111827;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+
+  <div
+    style="
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4); ">
+
+    <h1
+      style="
+        color: #6a0dad;
+        margin-bottom: 20px;">
+      Error de inicio de sesión
+    </h1>
+
+    <p
+      style="
+        font-size: 18px;
+        color: #444;">
+      <%= error %>
+    </p>
+    <br>
+    <a
+      href="/login"
+      class="menu-item"
+      style="
+        background: #6a0dad;
+        display: block;">
+      Volver al login
+    </a>
+
+  </div>
+
+</body>
+
+</html>

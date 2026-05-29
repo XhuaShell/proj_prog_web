@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register Seller</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<div class="container mt-5">
+
+  <h1>Register Seller</h1>
+
+  <form action="/panel/admin/seller/register" method="POST">
+
+    <div class="mb-3">
+      <label>Name</label>
+
+      <input
+        type="text"
+        name="firstname"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label>Lastname</label>
+
+      <input
+        type="text"
+        name="lastname"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label>Password</label>
+
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
+      Register
+    </button>
+
+  </form>
+
+</div>
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>

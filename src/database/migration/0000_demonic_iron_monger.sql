@@ -1,8 +1,8 @@
 CREATE TABLE "brands" (
 	"id_brand" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(100) NOT NULL,
-	"tax_id" varchar(30) NOT NULL,
-	CONSTRAINT "brands_tax_id_unique" UNIQUE("tax_id")
+	"nif" varchar(30) NOT NULL,
+	CONSTRAINT "brands_nif_unique" UNIQUE("nif")
 );
 --> statement-breakpoint
 CREATE TABLE "models" (

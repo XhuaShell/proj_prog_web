@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1778610895317,
-      "tag": "0000_heavy_fabian_cortez",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1778615699663,
-      "tag": "0001_familiar_mongoose",
+      "when": 1778635823646,
+      "tag": "0000_demonic_iron_monger",
       "breakpoints": true
     }
   ]

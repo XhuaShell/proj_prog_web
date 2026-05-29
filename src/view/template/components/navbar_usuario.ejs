@@ -1,26 +1,61 @@
 <div class="layout-panel">
-        <div class="sidebar">
+
+    <div class="sidebar">
+
         <h4><%= panelInfo.title %></h4>
+
         <h5><%= user.username %></h5>
 
         <hr class="linea-bonita">
 
         <nav>
+
             <% for (let section of panelInfo.sections) { %>
 
                 <span><%= section.title %></span>
 
                 <% for (let button of section.buttons ) { %>
+
                     <a href="<%= button.link %>" class="menu-item">
+
                         <%= button.name %>
+
                     </a>
+
                 <% } %>
 
                 <hr class="linea-bonita linea-bonita-secundaria">
 
             <% } %>
+
         </nav>
+
+        <!-- LOGOUT -->
+
+        <div style="margin-top: 30px;">
+
+            <form action="/logout" method="POST">
+
+                <button
+                    type="submit"
+                    class="menu-item"
+                    style="
+                        width: 100%;
+                        border: none;
+                        cursor: pointer;
+                    "
+                >
+
+                    Logout
+
+                </button>
+
+            </form>
+
+        </div>
+
     </div>
 
     <!-- CONTENIDO -->
-<div class="contenido-panel">
+
+    <div class="contenido-panel">
