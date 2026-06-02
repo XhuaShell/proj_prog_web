@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authAdminMiddleware } from "../middleware/auth.middleware.js";
+import { authAdminMiddleware, authSessionMiddleware } from "../middleware/auth.middleware.js";
 import { getAdminPanel } from "../controller/panel.controller.js";
 
 import {

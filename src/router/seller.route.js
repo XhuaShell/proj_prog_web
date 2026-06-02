@@ -11,7 +11,32 @@ import {
   deleteSeller,
 } from "../controller/seller.controller.js";
 
+import {
+  getSalesTable,
+  getSaleForm,
+  registerSale
+}
+from "../controller/sale.controller.js";
+
 export const SellerRouter = Router();
+//FORM REGISTER SALE
+SellerRouter.get(
+  "/panel/seller/sales",
+  authSellerMiddleware,
+  getSalesTable
+);
+
+SellerRouter.get(
+  "/panel/seller/sale/register",
+  authSellerMiddleware,
+  getSaleForm
+);
+
+SellerRouter.post(
+  "/panel/seller/sale/register",
+  authSellerMiddleware,
+  registerSale
+);
 
 // PANEL SELLER
 SellerRouter.get(

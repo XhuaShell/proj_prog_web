@@ -47,7 +47,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Personal account",
-              link: "/error/unfinishedFunction",
+              link: "/panel/account",
             },
           ],
         },
@@ -65,7 +65,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Datos",
-              link: "/error/unfinishedFunction",
+              link: "/panel/account",
             },
           ],
         },
@@ -74,15 +74,6 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Ver",
-              link: "/error/unfinishedFunction",
-            },
-          ],
-        },
-        {
-          title: "Cuenta",
-          buttons: [
-            {
-              name: "Actualización",
               link: "/error/unfinishedFunction",
             },
           ],
@@ -101,11 +92,11 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Registrar",
-              link: "/zona/lista",
+              link: "/panel/seller/sale/register",
             },
             {
-              name: "Ver",
-              link: "",
+              name: "Ver Ventas",
+              link: "/panel/seller/sales",
             },
           ],
         },
@@ -127,7 +118,7 @@ export function getPanel(panel) {
           buttons: [
             {
               name: "Actualización",
-              link: "/socio/informacion",
+              link: "/panel/account",
             },
           ],
         },

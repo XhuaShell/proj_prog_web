@@ -1,0 +1,68 @@
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario',
+{
+  panelInfo,
+  user
+}) %>
+
+<div class="container mt-4">
+
+<h2>Registrar Venta</h2>
+
+<form
+ action="/panel/seller/sale/register"
+ method="POST">
+
+  <div class="mb-3">
+    <label>Auto</label>
+
+    <input
+      type="text"
+      name="car_name"
+      class="form-control"
+      required
+    >
+  </div>
+
+  <div class="mb-3">
+    <label>Método de pago</label>
+
+    <select
+      name="payment_type"
+      class="form-control">
+
+      <option>
+        Contado
+      </option>
+
+      <option>
+        Financiera
+      </option>
+
+    </select>
+
+  </div>
+
+  <div class="mb-3">
+    <label>Total</label>
+
+    <input
+      type="number"
+      name="total_amount"
+      class="form-control"
+      required
+    >
+  </div>
+
+  <button
+   class="btn btn-primary">
+
+    Registrar Venta
+
+  </button>
+
+</form>
+
+</div>
+
+<%- include('../components/footer'); %>

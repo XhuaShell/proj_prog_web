@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Account</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario', { panelInfo, user }) %>
+
+<div class="container mt-5">
+
+    <h2>Personal Account</h2>
+
+    <form
+        action="/panel/account/update"
+        method="POST">
+
+        <div class="mb-3">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                class="form-control"
+                name="firstname"
+                value="<%= user.firstname %>">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Lastname</label>
+
+            <input
+                type="text"
+                class="form-control"
+                name="lastname"
+                value="<%= user.lastname %>">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Email</label>
+
+            <input
+                type="text"
+                class="form-control"
+                value="<%= user.email %>"
+                readonly>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Role</label>
+
+            <input
+                type="text"
+                class="form-control"
+                value="<%= user.role %>"
+                readonly>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Address</label>
+
+            <input
+                type="text"
+                class="form-control"
+                name="address"
+                value="<%= user.address || '' %>">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Phone</label>
+
+            <input
+                type="text"
+                class="form-control"
+                name="ph_number"
+                value="<%= user.ph_number || '' %>">
+
+        </div>
+
+        <button
+            class="btn btn-primary"
+            type="submit">
+
+            Save changes
+
+        </button>
+
+    </form>
+
+</div>
+
+<%- include('../components/navbar_footer'); %>
+<%- include('../components/footer'); %>

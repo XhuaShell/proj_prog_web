@@ -1,0 +1,46 @@
+<%- include('../components/header'); %>
+<%- include('../components/navbar_usuario',
+{
+  panelInfo,
+  user
+}) %>
+
+<div class="container">
+
+<h2>Ventas</h2>
+
+<table class="table">
+
+<thead>
+<tr>
+
+<th>Auto</th>
+<th>Pago</th>
+<th>Total</th>
+
+</tr>
+</thead>
+
+<tbody>
+
+<% sales.forEach(sale => { %>
+
+<tr>
+
+<td><%= sale.car_name %></td>
+
+<td><%= sale.payment_type %></td>
+
+<td><%= sale.total_amount %></td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+<%- include('../components/footer'); %>

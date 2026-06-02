@@ -4,6 +4,14 @@ import ErrorRouter from "./error.route.js";
 import AdminRouter from "./admin.route.js";
 import CustomerRouter from "./customer.route.js";
 import SellerRouter from "./seller.route.js";
+import {
+  getPersonalAccount,
+  updatePersonalAccount
+} from "../controller/user.controller.js";
+
+import {
+  authSessionMiddleware
+} from "../middleware/auth.middleware.js";
 
 import {
   authAdminMiddleware,
@@ -23,5 +31,18 @@ MainRouter.use("/error", ErrorRouter);
 MainRouter.use(AdminRouter);
 MainRouter.use(CustomerRouter);
 MainRouter.use(SellerRouter);
+
+// PERSONAL ACCOUNT
+MainRouter.get(
+  "/panel/account",
+  authSessionMiddleware,
+  getPersonalAccount
+);
+
+MainRouter.post(
+  "/panel/account/update",
+  authSessionMiddleware,
+  updatePersonalAccount
+);
 
 export default MainRouter;
