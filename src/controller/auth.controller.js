@@ -63,7 +63,7 @@ export const registerAuth = async (req, res, next) => {
 
   await CustomerService.registerCustomer(firstname, lastname, email, password);
 
-  res.redirect("/register");
+  res.redirect("/login");
 };
 
 export const logoutAuth = async (req, res, next) => {

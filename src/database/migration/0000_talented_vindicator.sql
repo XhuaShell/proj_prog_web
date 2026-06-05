@@ -44,5 +44,14 @@ CREATE TABLE "users" (
 	CONSTRAINT "users_ph_number_unique" UNIQUE("ph_number")
 );
 --> statement-breakpoint
+CREATE TABLE "sales" (
+	"id_sale" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id_seller" uuid NOT NULL,
+	"car_name" varchar(100) NOT NULL,
+	"payment_type" varchar(50) NOT NULL,
+	"total_amount" numeric NOT NULL,
+	"sale_date" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 ALTER TABLE "models" ADD CONSTRAINT "models_id_spec_technical_specs_id_spec_fk" FOREIGN KEY ("id_spec") REFERENCES "public"."technical_specs"("id_spec") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "models" ADD CONSTRAINT "models_id_brand_brands_id_brand_fk" FOREIGN KEY ("id_brand") REFERENCES "public"."brands"("id_brand") ON DELETE no action ON UPDATE no action;
